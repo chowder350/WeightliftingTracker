@@ -10,6 +10,9 @@ class PickWorkoutComponent extends Component {
     super()
     this.state = {
     workoutList: [],
+    workoutTitle:null,
+    workoutID: null,
+    showWorkoutComponent: false,
     }
   }
 
@@ -23,14 +26,20 @@ class PickWorkoutComponent extends Component {
  }
 
  handleCardClick = (e, workoutTitle, id) => {
-    return(
-      <WorkoutComponent key={id} id={id} workoutTitle={workoutTitle} />
-    )
+    this.setState({
+        workoutTitle: workoutTitle,
+        workoutID: id,
+        showWorkoutComponent: true,
+    })
+
   }
  
   render() {
-    const {workoutList} = this.state;
-    //console.log(workoutList)
+    const {workoutList, workoutID, workoutTitle, showWorkoutComponent} = this.state;
+    console.log(workoutTitle, workoutID)
+
+   
+
   const workoutCards = workoutList.map((workout) => {
       console.log(workout.WorkoutID)
     return(
@@ -41,11 +50,28 @@ class PickWorkoutComponent extends Component {
     )
  })
 
+    let View;
+    //If a workout has not yet been selected, display our View as the options to select.
+    if(showWorkoutComponent === false)
+    {
+        View = ( 
+        <div>
+        <h1>Select a Workout</h1>
+        {workoutCards.length > 0 ? workoutCards : null} 
+        </div>) 
+    }
+    else{ //Once a workout has been selected, display the Workout component in our view.
+        View = (
+            <WorkoutComponent id={workoutID} workoutTitle={workoutTitle}/>
+        )
+       
+        
+    }
+
     return (
       <>
       <Container>
-        <h1>Select a Workout</h1>
-       {workoutCards.length > 0 ? workoutCards : null} 
+      {showWorkoutComponent !== null ? View : null}
       </Container>
       </>
     )

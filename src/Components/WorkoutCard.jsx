@@ -4,7 +4,6 @@ import { Card } from 'react-bootstrap';
 
 
 function WorkoutCard(props) {
-  console.log(props.key)
   return (  
     <Card onClick={(e) => props.handleCardClick(e, props.title, props.id)}>
     <Card.Body>

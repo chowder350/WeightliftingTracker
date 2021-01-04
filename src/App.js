@@ -2,13 +2,18 @@
 import './App.css';
 import WorkoutComponent from './Components/WorkoutComponent'
 import PickWorkoutComponent from './Components/PickWorkoutComponent'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-       <PickWorkoutComponent/>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={PickWorkoutComponent}/>
+          </Switch>
+        </Router>
       </header>
     </div>
   );

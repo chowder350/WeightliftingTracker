@@ -16,19 +16,20 @@ class WorkoutComponent extends Component {
    //make call to node server to get lift data from DB
     var response = await axios.get('/api/liftdata');
     this.setState({
-      liftData: response.data.recordset,
-      workoutTitle: response.data.recordset[0].Title });
+      liftData: response.data.recordset });
    
 
  }
  
   render() {
-    const {liftData, workoutTitle} = this.state;
+    const {liftData} = this.state;
 
-    
+    console.log(liftData)
   const liftList = liftData.map((lift) => {
     return(
-      <LiftComponent key={lift.WorkoutLiftLogID} title={lift.LiftTitle} sets={lift.Sets} reps={lift.Reps} weight={lift.Weight} notes={lift.Notes}/>
+     this.props.id === lift.WorkoutID ?
+      <LiftComponent key={lift.WorkoutLiftLogID} title={lift.LiftTitle} sets={lift.Sets} reps={lift.Reps} weight={lift.Weight} notes={lift.Notes}/> : 
+      <LiftComponent/>
     )
   })
     return (
