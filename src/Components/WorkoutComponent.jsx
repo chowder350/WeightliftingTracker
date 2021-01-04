@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import LiftComponent from './LiftComponent';
 import {Container} from 'react-bootstrap';
+import axios from 'axios';
 
 class WorkoutComponent extends Component {
   constructor() {
@@ -12,7 +13,8 @@ class WorkoutComponent extends Component {
 
 
  componentDidMount = async () =>{
- 
+    var response = await axios.get('/getLiftData');
+    console.log(response);
  }
  
   render() {
