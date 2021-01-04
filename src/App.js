@@ -1,12 +1,12 @@
-import logo from './logo.svg';
+
 import './App.css';
-import DayComponent from './Components/DayComponent'
+import WorkoutComponent from './Components/WorkoutComponent'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-       <DayComponent/>
+       <WorkoutComponent/>
       </header>
     </div>
   );
