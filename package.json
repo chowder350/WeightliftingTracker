@@ -2,11 +2,13 @@
   "name": "weightliftingtracker",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4090",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
     "bootstrap": "^4.5.3",
+    "msnodesqlv8": "^2.0.9",
     "mssql": "^6.3.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",

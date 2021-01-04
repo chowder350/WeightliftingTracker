@@ -13,8 +13,8 @@ class WorkoutComponent extends Component {
 
 
  componentDidMount = async () =>{
-    var response = await axios.get('/getLiftData');
-    console.log(response);
+    var response = await axios.get('/api/liftdata');
+    console.log(response.data.recordset);
  }
  
   render() {
