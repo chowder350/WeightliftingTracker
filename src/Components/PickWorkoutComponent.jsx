@@ -36,12 +36,8 @@ class PickWorkoutComponent extends Component {
  
   render() {
     const {workoutList, workoutID, workoutTitle, showWorkoutComponent} = this.state;
-    console.log(workoutTitle, workoutID)
-
-   
 
   const workoutCards = workoutList.map((workout) => {
-      console.log(workout.WorkoutID)
     return(
         <div>
         <WorkoutCard key={workout.WorkoutID} id={workout.WorkoutID} title={workout.Title} handleCardClick={this.handleCardClick}/>
