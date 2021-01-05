@@ -34,12 +34,14 @@ handleNotesChange = (e) => {
   this.setState({Notes: e.target.value})
 }
 handleSaveLift = async () =>{
+  var today = new Date();
   var updatedLift = {
     WorkoutLiftLogID: this.state.WorkoutLiftLogID,
     Sets: this.state.Sets,
     Reps: this.state.Reps,
     Weight: this.state.Weight,
-    Notes: this.state.Notes.toString()
+    Notes: this.state.Notes,
+    Date: today
   }
   var response = await axios.put('/api/workoutliftlog', updatedLift, null);
   console.log(response);
