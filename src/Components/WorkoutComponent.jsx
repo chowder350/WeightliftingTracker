@@ -28,7 +28,7 @@ class WorkoutComponent extends Component {
   const liftList = liftData.map((lift) => {
     return(
      this.props.id === lift.WorkoutID ?
-      <LiftComponent key={lift.WorkoutLiftLogID} title={lift.LiftTitle} sets={lift.Sets} reps={lift.Reps} weight={lift.Weight} notes={lift.Notes}/> : 
+      <LiftComponent key={lift.WorkoutLiftLogID} workoutId={lift.WorkoutID} liftId={lift.LiftID} title={lift.LiftTitle} sets={lift.Sets} reps={lift.Reps} weight={lift.Weight} notes={lift.Notes}/> : 
       <LiftComponent/>
     )
   })

@@ -13,7 +13,7 @@ class LiftComponent extends Component {
 
 
   render() {
-   
+   console.log(this.props)
     return (
         <Form>
             <h3>{this.props.title}: </h3>
