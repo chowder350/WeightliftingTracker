@@ -14,6 +14,8 @@ class LiftComponent extends Component {
       Reps: props.reps,
       Weight: props.weight,
       Notes: props.notes,
+      WorkoutLiftLogID: props.WorkoutLiftLogID,
+
     
     }
   }
@@ -31,22 +33,22 @@ handleWeightChange = (e) => {
 handleNotesChange = (e) => {
   this.setState({Notes: e.target.value})
 }
-handleSaveLift = () =>{
+handleSaveLift = async () =>{
   var updatedLift = {
-    WorkoutID: this.props.workoutId,
-    LiftID: this.props.liftId,
+    WorkoutLiftLogID: this.state.WorkoutLiftLogID,
     Sets: this.state.Sets,
     Reps: this.state.Reps,
     Weight: this.state.Weight,
-    Notes: this.state.Notes
+    Notes: this.state.Notes.toString()
   }
+  var response = await axios.put('/api/workoutliftlog', updatedLift, null);
+  console.log(response);
 
 }
 
 
   render() {
   const{Title, Sets, Reps, Weight, Notes} = this.state;
-  //console.log(this.props)
     return (
         <Form>
             <h3>{Title}: </h3> 
