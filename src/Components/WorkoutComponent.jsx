@@ -4,10 +4,11 @@ import {Container} from 'react-bootstrap';
 import axios from 'axios';
 
 class WorkoutComponent extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
     liftData: [],
+    selectedWorkoutID: this.props.id,
     }
   }
 
@@ -22,13 +23,14 @@ class WorkoutComponent extends Component {
  }
  
   render() {
-    const {liftData} = this.state;
+    const {liftData, selectedWorkoutID} = this.state;
+    console.log(liftData)
 
   const liftList = liftData.map((lift) => {
     return(
-     this.props.id === lift.WorkoutID ?
-      <LiftComponent key={lift.WorkoutLiftLogID} WorkoutLiftLogID={lift.WorkoutLiftLogID} workoutId={lift.WorkoutID} liftId={lift.LiftID} title={lift.LiftTitle} sets={lift.Sets} reps={lift.Reps} weight={lift.Weight} notes={lift.Notes}/> : 
-      <LiftComponent/>
+     lift.WorkoutID === selectedWorkoutID ?
+      <LiftComponent key={lift.WorkoutLiftLogID} WorkoutLiftLogID={lift.WorkoutLiftLogID} title={lift.LiftTitle} sets={lift.Sets} reps={lift.Reps} weight={lift.Weight} notes={lift.Notes}/> : null
+      
     )
   })
     return (

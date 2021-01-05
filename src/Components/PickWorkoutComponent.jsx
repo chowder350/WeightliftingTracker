@@ -10,9 +10,9 @@ class PickWorkoutComponent extends Component {
     super()
     this.state = {
     workoutList: [],
-    workoutTitle:null,
-    workoutID: null,
-    showWorkoutComponent: false,
+    selectedWorkoutTitle:null,
+    selectedWorkoutID: null,
+    showSelectedWorkoutComponent: false,
     }
   }
 
@@ -27,18 +27,18 @@ class PickWorkoutComponent extends Component {
 
  handleCardClick = (e, workoutTitle, id) => {
     this.setState({
-        workoutTitle: workoutTitle,
-        workoutID: id,
-        showWorkoutComponent: true,
+        selectedWorkoutTitle: workoutTitle,
+        selectedWorkoutID: id,
+        showSelectedWorkoutComponent: true,
     })
 
   }
  
   render() {
-    const {workoutList, workoutID, workoutTitle, showWorkoutComponent} = this.state;
+    const {workoutList, selectedWorkoutID, selectedWorkoutTitle, showSelectedWorkoutComponent} = this.state;
 
   const workoutCards = workoutList.map((workout) => {
-    return(
+      return(
         <div>
         <WorkoutCard key={workout.WorkoutID} id={workout.WorkoutID} title={workout.Title} handleCardClick={this.handleCardClick}/>
         <br/>
@@ -48,7 +48,7 @@ class PickWorkoutComponent extends Component {
 
     let View;
     //If a workout has not yet been selected, display our View as the options to select.
-    if(showWorkoutComponent === false)
+    if(showSelectedWorkoutComponent === false)
     {
         View = ( 
         <div>
@@ -58,16 +58,14 @@ class PickWorkoutComponent extends Component {
     }
     else{ //Once a workout has been selected, display the Workout component in our view.
         View = (
-            <WorkoutComponent id={workoutID} workoutTitle={workoutTitle}/>
-        )
-       
-        
+            <WorkoutComponent key={selectedWorkoutID} id={selectedWorkoutID} workoutTitle={selectedWorkoutTitle}/>
+        ) 
     }
 
     return (
       <>
       <Container>
-      {showWorkoutComponent !== null ? View : null}
+      {showSelectedWorkoutComponent !== null ? View : null}
       </Container>
       </>
     )
