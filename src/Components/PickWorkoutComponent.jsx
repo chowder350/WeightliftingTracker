@@ -32,18 +32,24 @@ class PickWorkoutComponent extends Component {
     })
 
   }
+
+
  
   render() {
     const {workoutList, selectedWorkoutID, selectedWorkoutTitle, showSelectedWorkoutComponent} = this.state;
+    var workoutCards = {};
 
-  const workoutCards = workoutList.map((workout) => {
-      return(
-        <div>
-        <WorkoutCard key={workout.WorkoutID} id={workout.WorkoutID} title={workout.Title} handleCardClick={this.handleCardClick}/>
-        <br/>
-        </div>
-    )
- })
+    if(workoutList){
+      var workoutCards = workoutList.map((workout) => {
+        return(
+          <div>
+          <WorkoutCard key={workout.WorkoutID} id={workout.WorkoutID} title={workout.Title} handleCardClick={this.handleCardClick}/>
+          <br/>
+          </div>
+      )
+    })
+    }
+   
 
     let View;
     //If a workout has not yet been selected, display our View as the options to select.

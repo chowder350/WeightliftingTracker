@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Router>
+        <Router basename="/">
           <Switch>
             <Route exact path="/" component={PickWorkoutComponent}/>
           </Switch>
