@@ -2,6 +2,7 @@ require('dotenv').config()
 var express = require('express');
 var app = express();
 var sql = require("mssql");
+var path = require("path");
 //const PORT = process.env.PORT || 4090;
 app.use(express.json());
 // Serve static files from the React app
