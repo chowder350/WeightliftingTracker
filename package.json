@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": ".",
-  "proxy": "http://localhost:4090",
+  "proxy": "http://localhost:5000",
   "engines": {
     "node": "12.16.1"
   },
