@@ -15,7 +15,8 @@ app.use(express.static(buildPath));
     user: process.env.USER,
     password: process.env.PASSWORD,
     server: process.env.SERVER,
-    database: process.env.DATABASE
+    database: process.env.DATABASE,
+    port: process.env.LOCALDBPORT,
 };
 
 console.log(config);
