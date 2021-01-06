@@ -15,9 +15,9 @@ app.use(express.static(buildPath));
     user: process.env.USER,
     password: process.env.PASSWORD,
     server: process.env.SERVER,
-    database: process.env.DATABASE,
-    //port: process.env.PORT
+    database: process.env.DATABASE
 };
+
 console.log(config);
 //GET REQUESTS
 app.get('/api/liftdata', function (req, res) {
@@ -100,12 +100,11 @@ app.put('/api/workoutliftlog', function (req, res) {
     });
 })
 
-// The "catchall" handler: for any request that doesn't
-// match one above, send back React's index.html file.
-app.get('/*', (req, res) => {
-    console.log(__dirname)
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
-  });
+// // The "catchall" handler: for any request that doesn't
+// // match one above, send back React's index.html file.
+// app.get('/*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../build', 'index.html'));
+//   });
 
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);
