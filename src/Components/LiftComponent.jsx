@@ -4,6 +4,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import stylesheet from '../assets/LiftComponent.css'
+import { Container } from 'react-bootstrap';
 
 class LiftComponent extends Component {
   constructor(props) {
@@ -15,10 +17,11 @@ class LiftComponent extends Component {
       Weight: props.weight,
       Notes: props.notes,
       WorkoutLiftLogID: props.WorkoutLiftLogID,
-
-    
+      successfullySaved: false,
     }
   }
+
+  
 
   //textbox handlers
 handleSetsChange = (e) => {
@@ -44,16 +47,37 @@ handleSaveLift = async () =>{
     Date: today
   }
   var response = await axios.put('/api/workoutliftlog', updatedLift, null);
-  console.log(response);
+  if(response.data === "Fail")
+  {
+    this.setState({successfullySaved: false});
+  }
+  else{
+    this.setState({successfullySaved: true});
+  }
 
 }
 
 
   render() {
-  const{Title, Sets, Reps, Weight, Notes} = this.state;
+  const{Title, Sets, Reps, Weight, Notes, successfullySaved} = this.state;
+
+  const redDot = (
+    <span className="redDot"/>
+  )
+  const greenDot = (
+    <span className="greenDot"/>
+  )
     return (
         <Form>
-            <h3>{Title}: </h3> 
+        <Form.Group as={Row}>
+          <Col xs={8}>
+          <Form.Label> <h4>{Title}:</h4> </Form.Label> 
+          </Col>
+          <Col xs={1}>
+          {successfullySaved === false ? redDot : greenDot}
+          </Col>
+        </Form.Group>
+            
         <Form.Group as={Row}>
           <Form.Label column xs="5">
             Sets:

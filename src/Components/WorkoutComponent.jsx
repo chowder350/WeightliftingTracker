@@ -24,7 +24,6 @@ class WorkoutComponent extends Component {
  
   render() {
     const {liftData, selectedWorkoutID} = this.state;
-    console.log(liftData)
 
   const liftList = liftData.map((lift) => {
     return(

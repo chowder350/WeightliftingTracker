@@ -1,0 +1,15 @@
+.redDot {
+    height: 30px;
+    width: 30px;
+    background-color:red;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+.greenDot {
+    height: 30px;
+    width: 30px;
+    background-color:green;
+    border-radius: 50%;
+    display: inline-block;
+  }
