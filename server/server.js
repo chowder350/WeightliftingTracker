@@ -104,7 +104,7 @@ app.put('/api/workoutliftlog', function (req, res) {
 // match one above, send back React's index.html file.
 app.get('/*', (req, res) => {
     console.log(__dirname)
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
   });
 
 app.listen(PORT, () => {
