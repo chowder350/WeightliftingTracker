@@ -1,12 +1,19 @@
-import logo from './logo.svg';
+
 import './App.css';
-import DayComponent from './Components/DayComponent'
+import WorkoutComponent from './Components/WorkoutComponent'
+import PickWorkoutComponent from './Components/PickWorkoutComponent'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-       <DayComponent/>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={PickWorkoutComponent}/>
+          </Switch>
+        </Router>
       </header>
     </div>
   );
