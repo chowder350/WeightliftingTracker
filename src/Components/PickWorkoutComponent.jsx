@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import LiftComponent from './LiftComponent';
 import {Container} from 'react-bootstrap';
 import axios from 'axios';
 import WorkoutCard from './WorkoutCard'

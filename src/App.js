@@ -1,6 +1,5 @@
 
 import './App.css';
-import WorkoutComponent from './Components/WorkoutComponent'
 import PickWorkoutComponent from './Components/PickWorkoutComponent'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
