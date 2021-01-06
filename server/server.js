@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'build')));
     password: process.env.PASSWORD,
     server: process.env.SERVER,
     database: process.env.DATABASE,
-    port: process.env.PORT
+    //port: process.env.PORT
 };
 console.log(config);
 //GET REQUESTS
