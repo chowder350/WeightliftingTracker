@@ -2,7 +2,7 @@ require('dotenv').config()
 var express = require('express');
 var app = express();
 var sql = require("mssql");
-const PORT = process.env.PORT || 4090;
+//const PORT = process.env.PORT || 4090;
 app.use(express.json());
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'build')));
@@ -103,6 +103,6 @@ app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
 
-app.listen(PORT, () => {
-    console.log(`Server running on ${PORT}`);
-    });
+// app.listen(PORT, () => {
+//     console.log(`Server running on ${PORT}`);
+//     });
