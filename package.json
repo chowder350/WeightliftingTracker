@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:4090",
+  "engines": {
+    "node": "12.16.1"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
@@ -16,8 +19,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
-    "web-vitals": "^0.2.4",
-    "node": "^12.16.1"
+    "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
