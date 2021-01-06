@@ -21,7 +21,6 @@
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },
-  "scripts": {
     "scripts": {
       "dev": "react-scripts start",
       "start": "serve -s build",
