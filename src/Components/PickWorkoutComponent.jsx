@@ -19,7 +19,7 @@ class PickWorkoutComponent extends Component {
  componentDidMount = async () =>{
    //make call to node server to get lift data from DB
     var response = await axios.get('/api/workouts');
-    this.setState({workoutList: response.data.recordset});
+    this.setState({workoutList: response.data});
    
 
  }
@@ -43,7 +43,7 @@ class PickWorkoutComponent extends Component {
       var workoutCards = workoutList.map((workout) => {
         return(
           <div>
-          <WorkoutCard key={workout.WorkoutID} id={workout.WorkoutID} title={workout.Title} handleCardClick={this.handleCardClick}/>
+          <WorkoutCard key={workout.workoutid} id={workout.workoutid} title={workout.title} handleCardClick={this.handleCardClick}/>
           <br/>
           </div>
       )

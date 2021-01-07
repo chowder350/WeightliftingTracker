@@ -47,12 +47,13 @@ handleSaveLift = async () =>{
     Date: today
   }
   var response = await axios.put('/api/workoutliftlog', updatedLift, null);
-  if(response.data === "Fail")
+  console.log(response);
+  if(response.data === "success")
   {
-    this.setState({successfullySaved: false});
+    this.setState({successfullySaved: true});
   }
   else{
-    this.setState({successfullySaved: true});
+    this.setState({successfullySaved: false});
   }
 
 }
