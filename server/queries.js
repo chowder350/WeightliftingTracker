@@ -6,7 +6,7 @@ const pool = new Pool({
   database: process.env.DATABASE,
   password: process.env.PASSWORD,
   port: process.env.DBPORT,
-  ssl: { rejectUnauthorized: false }
+  //ssl: { rejectUnauthorized: false }
 })
 
 console.log(pool);
@@ -35,9 +35,18 @@ console.log(pool);
     })
   }
 
+  const getHistoricalLog = (request, response) => {
+    pool.query('Select l.liftid, l.lifttitle, wll.sets, wll.reps, wll.weight, wll.date '
+    + 'FROM workoutliftlog_history wll '
+    + 'INNER JOIN lift l ON wll.liftid = l.liftid', (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).json(results.rows)
+    })
+  }
+
 //PUT METHODS
-
-
 const updateWorkoutLiftLog = async (request, response) => {
     // note: we don't try/catch this because if connecting throws an exception
     // we don't need to dispose of the client (it will be undefined)
@@ -66,5 +75,6 @@ const updateWorkoutLiftLog = async (request, response) => {
   module.exports = {
     getLiftData,
     getWorkouts,
+    getHistoricalLog,
     updateWorkoutLiftLog
   }

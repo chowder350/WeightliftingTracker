@@ -23,6 +23,8 @@ app.get('/api/liftdata', db.getLiftData);
 
 app.get('/api/workouts', db.getWorkouts);
 
+app.get('/api/historicallog', db.getHistoricalLog);
+
 // //PUT REQUESTS
 app.put("/api/workoutliftlog", db.updateWorkoutLiftLog)
 
