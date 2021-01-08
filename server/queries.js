@@ -46,6 +46,15 @@ console.log(pool);
     })
   }
 
+  const getNumberOfLifts = (request, response) => {
+    pool.query('SELECT COUNT(DISTINCT liftid) FROM workoutliftlog_history', (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).json(results.rows)
+    })
+  }
+
 //PUT METHODS
 const updateWorkoutLiftLog = async (request, response) => {
     // note: we don't try/catch this because if connecting throws an exception
@@ -76,5 +85,6 @@ const updateWorkoutLiftLog = async (request, response) => {
     getLiftData,
     getWorkouts,
     getHistoricalLog,
+    getNumberOfLifts,
     updateWorkoutLiftLog
   }
