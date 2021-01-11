@@ -1,5 +1,6 @@
 
 import './App.css';
+import React from 'react';
 import PickWorkoutComponent from './Components/PickWorkoutComponent'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import ProgressionDashboard from './Components/ProgressionDashboard';

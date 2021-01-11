@@ -36,11 +36,13 @@ class PickWorkoutComponent extends Component {
 
  
   render() {
-    const {workoutList, selectedWorkoutID, selectedWorkoutTitle, showSelectedWorkoutComponent} = this.state;
-    var workoutCards = {};
+    const {selectedWorkoutID, selectedWorkoutTitle, showSelectedWorkoutComponent} = this.state;
+    var workoutCards = [];
+    var workoutList = Array.from(this.state.workoutList);
+    console.log(workoutList)
 
-    if(workoutList){
-      var workoutCards = workoutList.map((workout) => {
+    if(workoutList.length > 0){
+      workoutCards = workoutList.map((workout) => {
         return(
           <div>
           <WorkoutCard key={workout.workoutid} id={workout.workoutid} title={workout.title} handleCardClick={this.handleCardClick}/>
@@ -49,6 +51,7 @@ class PickWorkoutComponent extends Component {
       )
     })
     }
+    console.log(workoutCards)
    
 
     let View;
