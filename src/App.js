@@ -12,7 +12,7 @@ function App() {
         <Router basename="/">
           <Switch>
             <Route exact path="/" component={PickWorkoutComponent}/>
-            <Route exact path ="/progression" component={ProgressionDashboard}/>
+            <Route exact path="/progression" component={ProgressionDashboard}/>
           </Switch>
         </Router>
       </header>
