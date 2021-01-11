@@ -16,8 +16,8 @@ const options = {
     yAxes: [
       {
         ticks: {
-          suggestedMin: 100,
-          suggestedMax: 100
+          suggestedMin: 1500,
+          suggestedMax: 6000
         }
       }
     ]
