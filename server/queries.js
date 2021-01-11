@@ -36,9 +36,9 @@ console.log(pool);
   }
 
   const getHistoricalLog = (request, response) => {
-    pool.query('Select l.liftid, l.lifttitle, wll.sets, wll.reps, wll.weight, wll.date '
-    + 'FROM workoutliftlog_history wll '
-    + 'INNER JOIN lift l ON wll.liftid = l.liftid', (error, results) => {
+    pool.query("Select l.liftid, l.lifttitle, wll.sets, wll.reps, wll.weight,to_char(wll.date, 'MM-dd-YYYY') AS date "
+    + "FROM workoutliftlog_history wll "
+    + "INNER JOIN lift l ON wll.liftid = l.liftid ORDER BY wll.date", (error, results) => {
       if (error) {
         throw error
       }

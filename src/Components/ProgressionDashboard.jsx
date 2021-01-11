@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import LiftComponent from './LiftComponent';
 import {Container} from 'react-bootstrap';
 import axios from 'axios';
+import ProgressionChart from './ProgressionChart'
 
 class ProgressionDashboard extends Component {
   constructor(props) {
@@ -35,36 +36,76 @@ class ProgressionDashboard extends Component {
     return historicalLifts.filter(lift => lift.liftid === x);
  }
  
-  render() {
-      const {liftLogData} = this.state;
-    console.log(liftLogData)
-   
-      if(liftLogData.length > 0){
-        let sets = liftLogData[0][0]["sets"] 
-        let reps = liftLogData[0][0]["reps"] 
-        let weight = liftLogData[0][0]["weight"] 
-        let totalWeightLifted = sets * reps * weight;
-        console.log(totalWeightLifted)
-    //       for(var x = 0; x < liftLogData.length; x++){
-    //           for(var y=0; y < liftLogData[x].length; y++){
-    //             //   let sets = liftLogData[x][y]["sets"] 
-    //             //   let reps = liftLogData[x][y]["reps"] 
-    //             //   let weight = liftLogData[x][y]["weight"] 
-    //             //   let totalWeightLifted = sets * reps * weight;
-    //             //   console.log(totalWeightLifted)
-    //             //   return(
-    //             //       <ProgressionChart 
-    //             //   )
-    //           }
-    //       }
-     }
+ renderCharts = () => {
+  const {liftLogData} = this.state;
 
-  
+  if(liftLogData.length > 0){
+    for(var x = 0; x< liftLogData.length; x++){
+      let liftdates = [];
+      let liftdata = [];
+      let lifttitle = ""
+      for(var y = 0; y < liftLogData[x].length; y++){
+        liftdates.push(liftLogData[x][y].date)
+        liftdata.push(liftLogData[x][y].sets * liftLogData[x][y].reps * liftLogData[x][y].weight)
+        lifttitle = liftLogData[x][y].lifttitle
+      }
+      let data = {
+        "labels": liftdates,
+        "datasets": [
+          {
+            "label": "Total Weight",
+            "data": liftdata,
+            "fill": false,
+            "backgroundColor": "#00FF00",
+            "borderColor": "#00FF00"
+          }
+        ],
+      }
+      return(
+        <ProgressionChart data={data} title={lifttitle}/>
+      )
+    }   
+ }
+}
+ 
+  render() {
+    const {liftLogData} = this.state;
+
+    if(liftLogData){
+      var ProgressionCharts = liftLogData.map((lift) => {
+        let liftdates = [];
+        let liftdata = [];
+        let lifttitle = ""
+        for(var y = 0; y < lift.length; y++){
+          console.log(lift[y].length)
+          liftdates.push(lift[y].date)
+          liftdata.push(lift[y].sets * lift[y].reps * lift[y].weight)
+          lifttitle = lift[y].lifttitle
+        }
+        let data = {
+          "labels": liftdates,
+          "datasets": [
+            {
+              "label": "Total Weight",
+              "data": liftdata,
+              "fill": false,
+              "backgroundColor": "#00FF00",
+              "borderColor": "#00FF00"
+            }
+          ],
+        }
+        return(
+          <ProgressionChart data={data} title={lifttitle}/>
+        )
+      })
+    }
+    
+
     return (
       <>
       <Container>
-
-    </Container>
+        {ProgressionCharts}
+      </Container>
       </>
     )
   }
