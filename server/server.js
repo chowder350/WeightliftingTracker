@@ -17,10 +17,10 @@ app.use(
 const buildPath = path.join(__dirname, '..', 'build');
 app.use(express.static(buildPath));
 
-// // PATH CONFIGURATION TO RESPOND TO A REQUEST TO STATIC ROUTE REQUEST BY SERVING index.html
-// app.get('/*', function (req, res) {
-//   res.sendFile(path.join(buildPath, 'index.html'));
-// });
+// PATH CONFIGURATION TO RESPOND TO A REQUEST TO STATIC ROUTE REQUEST BY SERVING index.html
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(buildPath, 'index.html'));
+});
 
 
 
