@@ -25,7 +25,6 @@ const options = {
 };
 
 function ProgressionChart(props) {
-  console.log(props)
   return (
     <Container>
       <h3 className="mt-5">{props.title}</h3>

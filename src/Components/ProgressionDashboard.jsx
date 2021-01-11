@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import LiftComponent from './LiftComponent';
 import {Container} from 'react-bootstrap';
 import axios from 'axios';
 import ProgressionChart from './ProgressionChart'
@@ -35,38 +34,6 @@ class ProgressionDashboard extends Component {
  filterResponses = (historicalLifts, x) => {
     return historicalLifts.filter(lift => lift.liftid === x);
  }
- 
- renderCharts = () => {
-  const {liftLogData} = this.state;
-
-  if(liftLogData.length > 0){
-    for(var x = 0; x< liftLogData.length; x++){
-      let liftdates = [];
-      let liftdata = [];
-      let lifttitle = ""
-      for(var y = 0; y < liftLogData[x].length; y++){
-        liftdates.push(liftLogData[x][y].date)
-        liftdata.push(liftLogData[x][y].sets * liftLogData[x][y].reps * liftLogData[x][y].weight)
-        lifttitle = liftLogData[x][y].lifttitle
-      }
-      let data = {
-        "labels": liftdates,
-        "datasets": [
-          {
-            "label": "Total Weight",
-            "data": liftdata,
-            "fill": false,
-            "backgroundColor": "#00FF00",
-            "borderColor": "#00FF00"
-          }
-        ],
-      }
-      return(
-        <ProgressionChart data={data} title={lifttitle}/>
-      )
-    }   
- }
-}
  
   render() {
     const {liftLogData} = this.state;
